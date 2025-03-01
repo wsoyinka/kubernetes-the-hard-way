@@ -1,3 +1,8 @@
+
+This is a fork of the original ["Kubernetes the hard way"](https://github.com/kelseyhightower/kubernetes-the-hard-way) originally written by kelseyhightower
+. Unlike the original that is based on Debian like distros for the ARM64 architecture, this fork is targetted at Enterprise Linux distributions such as Rocky Linux running on x86_64 architecture. 
+
+
 # Kubernetes The Hard Way
 
 This tutorial walks you through setting up Kubernetes the hard way. This guide is not for someone looking for a fully automated tool to bring up a Kubernetes cluster. Kubernetes The Hard Way is optimized for learning, which means taking the long route to ensure you understand each task required to bootstrap a Kubernetes cluster.
@@ -26,7 +31,7 @@ Component versions:
 
 ## Labs
 
-This tutorial requires four (4) ARM64 based virtual or physical machines connected to the same network. While ARM64 based machines are used for the tutorial, the lessons learned can be applied to other platforms.
+This tutorial requires four (4) x86_64 based virtual or physical machines connected to the same network. While x86_64 based machines are used for the tutorial, the lessons learned can be applied to other platforms.
 
 * [Prerequisites](docs/01-prerequisites.md)
 * [Setting up the Jumpbox](docs/02-jumpbox.md)
