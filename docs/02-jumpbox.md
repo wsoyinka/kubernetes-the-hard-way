@@ -47,13 +47,14 @@ pwd
 
 ### Download Binaries
 
-In this section you will download the binaries for the various Kubernetes components. The binaries will be stored in the `downloads` directory on the `jumpbox`, which will reduce the amount of internet bandwidth required to complete this tutorial as we avoid downloading the binaries multiple times for each machine in our Kubernetes cluster.
+In this section you will download the binaries for the various Kubernetes components. The binaries will be stored in the `Downloads` directory on the `jumpbox`, which will reduce the amount of internet bandwidth required to complete this tutorial as we avoid downloading the binaries multiple times for each machine in our Kubernetes cluster.
 
 The binaries that will be downloaded are listed in the `downloads.txt` file, which you can review using the `cat` command:
 
 ```bash
 cat downloads.txt
 ```
+
 
 Download the binaries listed in the `downloads.txt` file into a directory called `downloads` using the `wget` command:
 
@@ -72,31 +73,29 @@ ls -loh downloads
 ```
 
 ```text
-total 510M
--rw-r--r-- 1 root 48M Oct 15 02:37 cni-plugins-linux-arm64-v1.6.0.tgz
--rw-r--r-- 1 root 32M Nov  5 11:37 containerd-2.0.0-linux-arm64.tar.gz
--rw-r--r-- 1 root 17M Aug 13 03:48 crictl-v1.31.1-linux-arm64.tar.gz
--rw-r--r-- 1 root 16M Sep 11 11:28 etcd-v3.4.34-linux-arm64.tar.gz
--rw-r--r-- 1 root 84M Oct 22 21:41 kube-apiserver
--rw-r--r-- 1 root 79M Oct 22 21:41 kube-controller-manager
--rw-r--r-- 1 root 53M Oct 22 21:41 kubectl
--rw-r--r-- 1 root 72M Oct 22 21:41 kubelet
--rw-r--r-- 1 root 61M Oct 22 21:41 kube-proxy
--rw-r--r-- 1 root 60M Oct 22 21:41 kube-scheduler
--rw-r--r-- 1 root 11M Nov  1 15:23 runc.arm64
+total 557M
+-rw-r--r--. 1 root 51M Jan  6 11:13 cni-plugins-linux-amd64-v1.6.2.tgz
+-rw-r--r--. 1 root 36M Feb 28 14:09 containerd-2.0.3-linux-amd64.tar.gz
+-rw-r--r--. 1 root 19M Dec  9 04:16 crictl-v1.32.0-linux-amd64.tar.gz
+-rw-r--r--. 1 root 17M Feb 25 14:19 etcd-v3.4.36-linux-amd64.tar.gz
+-rw-r--r--. 1 root 89M Dec 11 16:12 kube-apiserver
+-rw-r--r--. 1 root 82M Dec 11 16:12 kube-controller-manager
+-rw-r--r--. 1 root 55M Dec 11 16:12 kubectl
+-rw-r--r--. 1 root 74M Dec 11 16:12 kubelet
+-rw-r--r--. 1 root 64M Dec 11 16:12 kube-proxy
+-rw-r--r--. 1 root 63M Dec 11 16:12 kube-scheduler
+-rw-r--r--. 1 root 11M Feb 13 20:19 runc.amd64
 ```
 
 ### Install kubectl
 
-In this section you will install the `kubectl`, the official Kubernetes client command line tool, on the `jumpbox` machine. `kubectl will be used to interact with the Kubernetes control once your cluster is provisioned later in this tutorial.
+In this section you will install the `kubectl`, the official Kubernetes client command line tool, on the `jumpbox` machine. `kubectl will be used to interact with the Kubernetes control plane once your cluster is provisioned later in this tutorial.
 
 Use the `chmod` command to make the `kubectl` binary executable and move it to the `/usr/local/bin/` directory:
 
 ```bash
-{
   chmod +x downloads/kubectl
   cp downloads/kubectl /usr/local/bin/
-}
 ```
 
 At this point `kubectl` is installed and can be verified by running the `kubectl` command:
@@ -106,8 +105,8 @@ kubectl version --client
 ```
 
 ```text
-Client Version: v1.31.2
-Kustomize Version: v5.4.2
+Client Version: v1.32.0
+Kustomize Version: v5.5.0
 ```
 
 At this point the `jumpbox` has been set up with all the command line tools and utilities necessary to complete the labs in this tutorial.

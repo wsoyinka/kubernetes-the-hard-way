@@ -64,6 +64,8 @@ Generate a new SSH key:
 ssh-keygen
 ```
 
+Press ENTER to accept all the default values for the prompts here:
+
 ```text
 Generating public/private rsa key pair.
 Enter file in which to save the key (/root/.ssh/id_rsa): 
@@ -90,9 +92,9 @@ done < machines.txt
 ```
 
 ```text
-aarch64 GNU/Linux
-aarch64 GNU/Linux
-aarch64 GNU/Linux
+x86_64 GNU/Linux
+x86_64 GNU/Linux
+x86_64 GNU/Linux
 ```
 
 ## Hostnames
@@ -104,8 +106,9 @@ To configure the hostname for each machine, run the following commands on the `j
 Set the hostname on each machine listed in the `machines.txt` file:
 
 ```bash
-while read IP FQDN HOST SUBNET; do 
-    CMD="sed -i 's/^127.0.1.1.*/127.0.1.1\t${FQDN} ${HOST}/' /etc/hosts"
+while read IP FQDN HOST SUBNET; do
+    ssh -n root@${IP} cp /etc/hosts /etc/hosts.bak 
+    CMD="sed -i 's/^127.0.0.1.*/127.0.0.1\t${FQDN} ${HOST}/' /etc/hosts"
     ssh -n root@${IP} "$CMD"
     ssh -n root@${IP} hostnamectl hostname ${HOST}
 done < machines.txt
@@ -176,15 +179,8 @@ cat /etc/hosts
 ```
 
 ```text
-127.0.0.1       localhost
-127.0.1.1       jumpbox
-
-# The following lines are desirable for IPv6 capable hosts
-::1     localhost ip6-localhost ip6-loopback
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-
-
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
 # Kubernetes The Hard Way
 XXX.XXX.XXX.XXX server.kubernetes.local server
@@ -201,9 +197,9 @@ done
 ```
 
 ```text
-server aarch64 GNU/Linux
-node-0 aarch64 GNU/Linux
-node-1 aarch64 GNU/Linux
+server x86_64 GNU/Linux
+node-0 x86_64 GNU/Linux
+node-1 x86_64 GNU/Linux
 ```
 
 ## Adding `/etc/hosts` Entries To The Remote Machines
