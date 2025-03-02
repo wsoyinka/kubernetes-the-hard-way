@@ -19,13 +19,11 @@ Every certificate authority starts with a private key and root certificate. In t
 Generate the CA configuration file, certificate, and private key:
 
 ```bash
-{
   openssl genrsa -out ca.key 4096
   openssl req -x509 -new -sha512 -noenc \
     -key ca.key -days 3653 \
     -config ca.conf \
     -out ca.crt
-}
 ```
 
 Results:
@@ -33,6 +31,9 @@ Results:
 ```txt
 ca.crt ca.key
 ```
+
+!!! Tip:
+    To view the details encoded in the generated certificate file (ca.crt), you can use this openssl command `openssl x509 -in ca.crt -text -noout | less`.  
 
 ## Create Client and Server Certificates
 
