@@ -12,7 +12,7 @@ When generating kubeconfig files for Kubelets the client certificate matching th
 
 > The following commands must be run in the same directory used to generate the SSL certificates during the [Generating TLS Certificates](04-certificate-authority.md) lab.
 
-Generate a kubeconfig file for the node-0 worker node:
+Generate a kubeconfig file for the node-0 and node-1 worker nodes:
 
 ```bash
 for host in node-0 node-1; do
@@ -50,7 +50,6 @@ node-1.kubeconfig
 Generate a kubeconfig file for the `kube-proxy` service:
 
 ```bash
-{
   kubectl config set-cluster kubernetes-the-hard-way \
     --certificate-authority=ca.crt \
     --embed-certs=true \
@@ -70,7 +69,6 @@ Generate a kubeconfig file for the `kube-proxy` service:
 
   kubectl config use-context default \
     --kubeconfig=kube-proxy.kubeconfig
-}
 ```
 
 Results:
@@ -84,7 +82,6 @@ kube-proxy.kubeconfig
 Generate a kubeconfig file for the `kube-controller-manager` service:
 
 ```bash
-{
   kubectl config set-cluster kubernetes-the-hard-way \
     --certificate-authority=ca.crt \
     --embed-certs=true \
@@ -104,7 +101,6 @@ Generate a kubeconfig file for the `kube-controller-manager` service:
 
   kubectl config use-context default \
     --kubeconfig=kube-controller-manager.kubeconfig
-}
 ```
 
 Results:
@@ -119,7 +115,6 @@ kube-controller-manager.kubeconfig
 Generate a kubeconfig file for the `kube-scheduler` service:
 
 ```bash
-{
   kubectl config set-cluster kubernetes-the-hard-way \
     --certificate-authority=ca.crt \
     --embed-certs=true \
@@ -139,7 +134,6 @@ Generate a kubeconfig file for the `kube-scheduler` service:
 
   kubectl config use-context default \
     --kubeconfig=kube-scheduler.kubeconfig
-}
 ```
 
 Results:
@@ -153,7 +147,6 @@ kube-scheduler.kubeconfig
 Generate a kubeconfig file for the `admin` user:
 
 ```bash
-{
   kubectl config set-cluster kubernetes-the-hard-way \
     --certificate-authority=ca.crt \
     --embed-certs=true \
@@ -173,7 +166,6 @@ Generate a kubeconfig file for the `admin` user:
 
   kubectl config use-context default \
     --kubeconfig=admin.kubeconfig
-}
 ```
 
 Results:
@@ -184,7 +176,7 @@ admin.kubeconfig
 
 ## Distribute the Kubernetes Configuration Files
 
-Copy the `kubelet` and `kube-proxy` kubeconfig files to the node-0 instance:
+Copy the `kubelet` and `kube-proxy` kubeconfig files to the node-0 and node-1 instances:
 
 ```bash
 for host in node-0 node-1; do
