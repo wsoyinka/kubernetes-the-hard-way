@@ -20,7 +20,7 @@ scp \
   root@server:~/
 ```
 
-The commands in this lab must be run on the controller instance: `server`. Login to the controller instance using the `ssh` command. Example:
+The commands in the following sections of this lab must be run on the `server` machine. Login to the controller instance using the `ssh` command. Example:
 
 ```bash
 ssh root@server
@@ -39,7 +39,6 @@ mkdir -p /etc/kubernetes/config
 Install the Kubernetes binaries:
 
 ```bash
-{
   chmod +x kube-apiserver \
     kube-controller-manager \
     kube-scheduler kubectl
@@ -48,13 +47,11 @@ Install the Kubernetes binaries:
     kube-controller-manager \
     kube-scheduler kubectl \
     /usr/local/bin/
-}
 ```
 
 ### Configure the Kubernetes API Server
 
 ```bash
-{
   mkdir -p /var/lib/kubernetes/
 
   mv ca.crt ca.key \
@@ -62,14 +59,12 @@ Install the Kubernetes binaries:
     service-accounts.key service-accounts.crt \
     encryption-config.yaml \
     /var/lib/kubernetes/
-}
 ```
 
 Create the `kube-apiserver.service` systemd unit file:
 
 ```bash
-mv kube-apiserver.service \
-  /etc/systemd/system/kube-apiserver.service
+mv kube-apiserver.service /etc/systemd/system/kube-apiserver.service
 ```
 
 ### Configure the Kubernetes Controller Manager
@@ -109,7 +104,6 @@ mv kube-scheduler.service /etc/systemd/system/
 ### Start the Controller Services
 
 ```bash
-{
   systemctl daemon-reload
   
   systemctl enable kube-apiserver \
@@ -117,7 +111,6 @@ mv kube-scheduler.service /etc/systemd/system/
     
   systemctl start kube-apiserver \
     kube-controller-manager kube-scheduler
-}
 ```
 
 > Allow up to 10 seconds for the Kubernetes API Server to fully initialize.
@@ -126,8 +119,7 @@ mv kube-scheduler.service /etc/systemd/system/
 ### Verification
 
 ```bash
-kubectl cluster-info \
-  --kubeconfig admin.kubeconfig
+kubectl cluster-info   --kubeconfig admin.kubeconfig
 ```
 
 ```text
@@ -166,14 +158,14 @@ curl -k --cacert ca.crt https://server.kubernetes.local:6443/version
 ```text
 {
   "major": "1",
-  "minor": "31",
-  "gitVersion": "v1.31.2",
-  "gitCommit": "5864a4677267e6adeae276ad85882a8714d69d9d",
+  "minor": "32",
+  "gitVersion": "v1.32.0",
+  "gitCommit": "70d3cc986aa8221cd1dfb1121852688902d3bf53",
   "gitTreeState": "clean",
-  "buildDate": "2024-10-22T20:28:14Z",
-  "goVersion": "go1.22.8",
+  "buildDate": "2024-12-11T17:59:15Z",
+  "goVersion": "go1.23.3",
   "compiler": "gc",
-  "platform": "linux/arm64"
+  "platform": "linux/amd64"
 }
 ```
 
