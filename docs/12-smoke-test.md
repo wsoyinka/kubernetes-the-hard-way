@@ -25,24 +25,24 @@ ssh root@server \
 00000010  73 2f 64 65 66 61 75 6c  74 2f 6b 75 62 65 72 6e  |s/default/kubern|
 00000020  65 74 65 73 2d 74 68 65  2d 68 61 72 64 2d 77 61  |etes-the-hard-wa|
 00000030  79 0a 6b 38 73 3a 65 6e  63 3a 61 65 73 63 62 63  |y.k8s:enc:aescbc|
-00000040  3a 76 31 3a 6b 65 79 31  3a 9b 79 a5 b9 49 a2 77  |:v1:key1:.y..I.w|
-00000050  c0 6a c9 12 7c b4 c7 c4  64 41 37 97 4a 83 a9 c1  |.j..|...dA7.J...|
-00000060  4f 14 ae 73 ab b8 38 26  11 14 0a 40 b8 f3 0e 0a  |O..s..8&...@....|
-00000070  f5 a7 a2 2c b6 35 b1 83  22 15 aa d0 dd 25 11 3e  |...,.5.."....%.>|
-00000080  c4 e9 69 1c 10 7a 9d f7  dc 22 28 89 2c 83 dd 0b  |..i..z..."(.,...|
-00000090  a4 5f 3a 93 0f ff 1f f8  bc 97 43 0e e5 05 5d f9  |._:.......C...].|
-000000a0  ef 88 02 80 49 81 f1 58  b0 48 39 19 14 e1 b1 34  |....I..X.H9....4|
-000000b0  f6 b0 9b 0a 9c 53 27 2b  23 b9 e6 52 b4 96 81 70  |.....S'+#..R...p|
-000000c0  a7 b6 7b 4f 44 d4 9c 07  51 a3 1b 22 96 4c 24 6c  |..{OD...Q..".L$l|
-000000d0  44 6c db 53 f5 31 e6 3f  15 7b 4c 23 06 c1 37 73  |Dl.S.1.?.{L#..7s|
-000000e0  e1 97 8e 4e 1a 2e 2c 1a  da 85 c3 ff 42 92 d0 f1  |...N..,.....B...|
-000000f0  87 b8 39 89 e8 46 2e b3  56 68 41 b8 1e 29 3d ba  |..9..F..VhA..)=.|
-00000100  dd d8 27 4c 7f d5 fe 97  3c a3 92 e9 3d ae 47 ee  |..'L....<...=.G.|
-00000110  24 6a 0b 7c ac b8 28 e6  25 a6 ce 04 80 ee c2 eb  |$j.|..(.%.......|
-00000120  4c 86 fa 70 66 13 63 59  03 c2 70 57 8b fb a1 d6  |L..pf.cY..pW....|
-00000130  f2 58 08 84 43 f3 70 7f  ad d8 30 63 3e ef ff b6  |.X..C.p...0c>...|
-00000140  b2 06 c3 45 c5 d8 89 d3  47 4a 72 ca 20 9b cf b5  |...E....GJr. ...|
-00000150  4b 3d 6d b4 58 ae 42 4b  7f 0a                    |K=m.X.BK..|
+00000040  3a 76 31 3a 6b 65 79 31  3a 67 64 d4 64 d9 6c eb  |:v1:key1:gd.d.l.|
+00000050  f3 a9 80 8c 82 a0 f3 50  e6 eb 02 cb a6 65 8b 51  |.......P.....e.Q|
+00000060  0a 03 2f ef 4a a8 d9 7d  62 f5 68 27 74 1c 6d 88  |../.J..}b.h't.m.|
+00000070  ee 89 39 8d c9 e4 c6 2c  9c 3f 55 3b eb 79 2c 55  |..9....,.?U;.y,U|
+00000080  d9 47 ec 77 84 0b 6e b1  ab 58 41 22 1e c3 7c 00  |.G.w..n..XA"..|.|
+00000090  92 ad ad d0 97 55 f4 d5  b6 1e 6d 57 fb 2f 7c 36  |.....U....mW./|6|
+000000a0  f5 6a 45 5e a7 a4 70 52  1d 9d 00 61 14 cd f3 92  |.jE^..pR...a....|
+000000b0  9a 05 57 dd cf 41 1c 74  0c a7 2c ac 64 f5 79 51  |..W..A.t..,.d.yQ|
+000000c0  e6 5c 16 e1 a9 5e da 00  91 d0 f5 77 e2 32 8f a2  |.\...^.....w.2..|
+000000d0  9a c3 26 50 f2 a0 f8 f9  95 09 20 29 f1 7c 7a 7d  |..&P...... ).|z}|
+000000e0  4f 82 0b 78 43 28 91 a1  56 ee 66 90 fb ac 26 8c  |O..xC(..V.f...&.|
+000000f0  a3 b4 b2 ed 2d 0a d3 54  d1 10 89 a4 c3 dd b6 2d  |....-..T.......-|
+00000100  b9 d7 98 bb db c4 0d f2  96 5a 57 8b 01 2e 97 43  |.........ZW....C|
+00000110  ea 9c 8b cf cc 9b 80 cd  02 c8 c5 a4 e7 bf 62 73  |..............bs|
+00000120  e6 6b e8 c2 cf 34 50 2b  e0 3c 66 a2 29 4f 08 0c  |.k...4P+.<f.)O..|
+00000130  65 99 e4 9f 40 4f d9 94  eb 40 bd 3a 01 77 95 2b  |e...@O...@.:.w.+|
+00000140  c9 20 ea a8 73 d9 19 2d  d8 00 9b da 3e 55 3e 82  |. ..s..-....>U>.|
+00000150  80 3a 39 d5 08 f9 6c de  6b 0a                    |.:9...l.k.|
 0000015a
 ```
 
@@ -67,7 +67,7 @@ kubectl get pods -l app=nginx
 
 ```bash
 NAME                     READY   STATUS    RESTARTS   AGE
-nginx-56fcf95486-c8dnx   1/1     Running   0          8s
+nginx-54c98b4f84-dfwl9   1/1     Running   0          71s
 ```
 
 ### Port Forwarding
@@ -100,17 +100,17 @@ curl --head http://127.0.0.1:8080
 
 ```text
 HTTP/1.1 200 OK
-Server: nginx/1.27.2
-Date: Thu, 14 Nov 2024 00:16:32 GMT
+Server: nginx/1.27.4
+Date: Tue, 04 Mar 2025 01:30:20 GMT
 Content-Type: text/html
 Content-Length: 615
-Last-Modified: Wed, 02 Oct 2024 15:13:19 GMT
+Last-Modified: Wed, 05 Feb 2025 11:06:32 GMT
 Connection: keep-alive
-ETag: "66fd630f-267"
+ETag: "67a34638-267"
 Accept-Ranges: bytes
 ```
 
-Switch back to the previous terminal and stop the port forwarding to the `nginx` pod:
+Switch back to the previous terminal and stop the port forwarding to the `nginx` pod by typing `[CTRL]` + `[C]`:
 
 ```text
 Forwarding from 127.0.0.1:8080 -> 80
@@ -130,8 +130,8 @@ kubectl logs $POD_NAME
 ```
 
 ```text
-...
-127.0.0.1 - - [14/Nov/2024:00:16:32 +0000] "HEAD / HTTP/1.1" 200 0 "-" "curl/7.88.1" "-"
+...<OUTPUT TRUNCATED>...
+127.0.0.1 - - [04/Mar/2025:01:30:20 +0000] "HEAD / HTTP/1.1" 200 0 "-" "curl/7.76.1" "-"
 ```
 
 ### Exec
@@ -145,7 +145,7 @@ kubectl exec -ti $POD_NAME -- nginx -v
 ```
 
 ```text
-nginx version: nginx/1.27.2
+nginx version: nginx/1.27.4   
 ```
 
 ## Services
@@ -178,13 +178,13 @@ curl -I http://node-0:${NODE_PORT}
 
 ```text
 HTTP/1.1 200 OK
-Server: nginx/1.25.3
-Date: Sun, 29 Oct 2023 05:11:15 GMT
+Server: nginx/1.27.4
+Date: Tue, 04 Mar 2025 01:40:20 GMT
 Content-Type: text/html
 Content-Length: 615
-Last-Modified: Tue, 24 Oct 2023 13:46:47 GMT
+Last-Modified: Wed, 05 Feb 2025 11:06:32 GMT
 Connection: keep-alive
-ETag: "6537cac7-267"
+ETag: "67a34638-267"
 Accept-Ranges: bytes
 ```
 

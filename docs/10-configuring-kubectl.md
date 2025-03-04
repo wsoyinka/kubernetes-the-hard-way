@@ -18,21 +18,20 @@ curl -k --cacert ca.crt \
 ```text
 {
   "major": "1",
-  "minor": "31",
-  "gitVersion": "v1.31.2",
-  "gitCommit": "5864a4677267e6adeae276ad85882a8714d69d9d",
+  "minor": "32",
+  "gitVersion": "v1.32.0",
+  "gitCommit": "70d3cc986aa8221cd1dfb1121852688902d3bf53",
   "gitTreeState": "clean",
-  "buildDate": "2024-10-22T20:28:14Z",
-  "goVersion": "go1.22.8",
+  "buildDate": "2024-12-11T17:59:15Z",
+  "goVersion": "go1.23.3",
   "compiler": "gc",
-  "platform": "linux/arm64"
+  "platform": "linux/amd64"
 }
 ```
 
 Generate a kubeconfig file suitable for authenticating as the `admin` user:
 
 ```bash
-{
   kubectl config set-cluster kubernetes-the-hard-way \
     --certificate-authority=ca.crt \
     --embed-certs=true \
@@ -47,7 +46,6 @@ Generate a kubeconfig file suitable for authenticating as the `admin` user:
     --user=admin
 
   kubectl config use-context kubernetes-the-hard-way
-}
 ```
 The results of running the command above should create a kubeconfig file in the default location `~/.kube/config` used by the  `kubectl` commandline tool. This also means you can run the `kubectl` command without specifying a config.
 
@@ -61,9 +59,9 @@ kubectl version
 ```
 
 ```text
-Client Version: v1.31.2
-Kustomize Version: v5.4.2
-Server Version: v1.31.2
+Client Version: v1.32.0
+Kustomize Version: v5.5.0
+Server Version: v1.32.0
 ```
 
 List the nodes in the remote Kubernetes cluster:
