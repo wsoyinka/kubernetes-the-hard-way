@@ -8,7 +8,7 @@ From the `jumpbox`, copy Kubernetes binaries and systemd unit files to each work
 
 ```bash
 for host in node-0 node-1; do
-  SUBNET=$(grep $host machines.txt | cut -d " " -f 4)
+  SUBNET=$(grep $host machines.txt | cut -d " " -f 5)
   sed "s|SUBNET|$SUBNET|g" \
     configs/10-bridge.conf > 10-bridge.conf 
     
@@ -140,6 +140,15 @@ Create the `kubelet-config.yaml` configuration file:
   mv kube-proxy-config.yaml /var/lib/kube-proxy/
   mv kube-proxy.service /etc/systemd/system/
 ```
+
+!!! Note
+  Although considered bad security form, you might have to temporarily or permanently disable SELinux if you run into any issues starting the needed systemd services. The proper fix is to investigate and create the needed policy files using tools such as ausearch, audit2allow and so on.  
+  The fix for getting SELinux out of the way and disabling it is by running the following:
+  
+  ```bash
+  sudo sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+  setenforce 0
+  ```
 
 ### Start the Worker Services
 
