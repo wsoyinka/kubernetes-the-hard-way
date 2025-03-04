@@ -4,7 +4,7 @@ In this lab you will bootstrap two Kubernetes worker nodes. The following compon
 
 ## Prerequisites
 
-Copy Kubernetes binaries and systemd unit files to each worker instance:
+From the `jumpbox`, copy Kubernetes binaries and systemd unit files to each worker instance:
 
 ```bash
 for host in node-0 node-1; do
@@ -23,10 +23,10 @@ done
 ```bash
 for host in node-0 node-1; do
   scp \
-    downloads/runc.arm64 \
-    downloads/crictl-v1.31.1-linux-arm64.tar.gz \
-    downloads/cni-plugins-linux-arm64-v1.6.0.tgz \
-    downloads/containerd-2.0.0-linux-arm64.tar.gz \
+    downloads/runc.amd64 \
+    downloads/crictl-v1.32.0-linux-amd64.tar.gz \
+    downloads/cni-plugins-linux-amd64-v1.6.2.tgz \
+    downloads/containerd-2.0.3-linux-amd64.tar.gz \
     downloads/kubectl \
     downloads/kubelet \
     downloads/kube-proxy \
@@ -41,7 +41,9 @@ for host in node-0 node-1; do
 done
 ```
 
-The commands in this lab must be run on each worker instance: `node-0`, `node-1`. Login to the worker instance using the `ssh` command. Example:
+The commands in this lab must be separately run on each worker instance: `node-0`, `node-1`. We'll only show the required steps and commands for node-0. You'll need to repeat the exact steps and commands on node-1. 
+
+Login to the worker node-0 instance using the `ssh` command.
 
 ```bash
 ssh root@node-0
@@ -52,10 +54,8 @@ ssh root@node-0
 Install the OS dependencies:
 
 ```bash
-{
-  apt-get update
-  apt-get -y install socat conntrack ipset
-}
+  dnf -y update
+  dnf -y install socat conntrack ipset tar
 ```
 
 > The socat binary enables support for the `kubectl port-forward` command.
@@ -76,7 +76,11 @@ If output is empty then swap is not enabled. If swap is enabled run the followin
 swapoff -a
 ```
 
-> To ensure swap remains off after reboot consult your Linux distro documentation.
+To ensure swap remains off after reboot comment out the line that automatically mounts the swap volume in the `/etc/fstab` file. Type:
+
+```bash
+sudo sed -i '/swap/s/^/#/' /etc/fstab
+```
 
 Create the installation directories:
 
@@ -93,16 +97,14 @@ mkdir -p \
 Install the worker binaries:
 
 ```bash
-{
   mkdir -p containerd
-  tar -xvf crictl-v1.31.1-linux-arm64.tar.gz
-  tar -xvf containerd-2.0.0-linux-arm64.tar.gz -C containerd
-  tar -xvf cni-plugins-linux-arm64-v1.6.0.tgz -C /opt/cni/bin/
-  mv runc.arm64 runc
+  tar -xvf crictl-v1.32.0-linux-amd64.tar.gz
+  tar -xvf containerd-2.0.3-linux-amd64.tar.gz -C containerd
+  tar -xvf cni-plugins-linux-amd64-v1.6.2.tgz -C /opt/cni/bin/
+  mv runc.amd64 runc
   chmod +x crictl kubectl kube-proxy kubelet runc 
   mv crictl kubectl kube-proxy kubelet runc /usr/local/bin/
   mv containerd/bin/* /bin/
-}
 ```
 
 ### Configure CNI Networking
@@ -118,11 +120,9 @@ mv 10-bridge.conf 99-loopback.conf /etc/cni/net.d/
 Install the `containerd` configuration files:
 
 ```bash
-{
   mkdir -p /etc/containerd/
   mv containerd-config.toml /etc/containerd/config.toml
   mv containerd.service /etc/systemd/system/
-}
 ```
 
 ### Configure the Kubelet
@@ -130,47 +130,48 @@ Install the `containerd` configuration files:
 Create the `kubelet-config.yaml` configuration file:
 
 ```bash
-{
   mv kubelet-config.yaml /var/lib/kubelet/
   mv kubelet.service /etc/systemd/system/
-}
 ```
 
 ### Configure the Kubernetes Proxy
 
 ```bash
-{
   mv kube-proxy-config.yaml /var/lib/kube-proxy/
   mv kube-proxy.service /etc/systemd/system/
-}
 ```
 
 ### Start the Worker Services
 
 ```bash
-{
   systemctl daemon-reload
   systemctl enable containerd kubelet kube-proxy
   systemctl start containerd kubelet kube-proxy
-}
 ```
 
 ## Verification
 
-The compute instances created in this tutorial will not have permission to complete this section. Run the following commands from the `jumpbox` machine.
+The compute instances created in this tutorial will not have permission to complete this verification section. Run the following commands from the `jumpbox` machine.
 
 List the registered Kubernetes nodes:
 
 ```bash
-ssh root@server \
-  "kubectl get nodes \
-  --kubeconfig admin.kubeconfig"
+ssh root@server "kubectl get nodes --kubeconfig admin.kubeconfig"
 ```
 
 ```
 NAME     STATUS   ROLES    AGE    VERSION
-node-0   Ready    <none>   1m     v1.31.2
-node-1   Ready    <none>   10s    v1.31.2
+node-0   Ready    <none>   1m     v1.32.0
 ```
+
+After completing all the previous steps in this lab on both `node-0` and `node-1` the output of the `kubectl get nodes` command should show:
+
+```
+NAME     STATUS   ROLES    AGE    VERSION
+node-0   Ready    <none>   1m     v1.32.0
+node-1   Ready    <none>   10s    v1.32.0
+```
+
+
 
 Next: [Configuring kubectl for Remote Access](10-configuring-kubectl.md)
